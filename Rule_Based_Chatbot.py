@@ -7,32 +7,32 @@ class RuleBot:
     negative_responses = ("no", "nope", "nah", "not really", "sorry")
     exit_commands = ("quit", "exit", "bye", "goodbye", "later")
 
-    # Random starter questions
+    # Random starter questions (College Admission themed)
     random_questions = (
-        "Why are you here? ",
-        "Are there many humans like you? ",
-        "What do humans consume for sustenance? ",
-        "Is there intelligent life on this planet? ",
-        "Does Earth have a leader? "
+        "Which college are you planning to apply to? ",
+        "What course or program are you interested in? ",
+        "Have you started the admission process yet? ",
+        "What factors matter most to you while selecting a college? ",
+        "Are you preparing for any entrance examinations? "
     )
 
     def __init__(self):
         # Intent recognition using keyword/regex mapping
         self.intent_patterns = {
-            "describe_planet": r"(planet|earth|world)",
+            "describe_planet": r"(college|campus|university)",
             "answer_why": r"(why|reason|purpose)",
             "about_intellipaat": r"(intellipaat|course|training)",
             "about_music": r"(music|song|sing)"
         }
 
     def greet(self):
-        self.name = input("What is your name? \n")
+        self.name = input("May I know your name?\n")
         response = input(
-            f"Hi {self.name}, I am a rule-based chatbot. Will you help me learn about your planet?\n"
+            f"Hello {self.name}! I am a college admission assistant chatbot. Would you like some guidance?\n"
         ).lower()
 
         if response in self.negative_responses:
-            print("Alright! Have a nice Earth day 👋")
+            print("No problem. Wishing you the best for your future 😊")
             return
 
         self.chat()
@@ -46,7 +46,7 @@ class RuleBot:
     def check_exit(self, reply):
         for command in self.exit_commands:
             if command in reply:
-                print("It was nice talking to you. Goodbye 👋")
+                print("Thank you for chatting. Best wishes for your admission journey 👋")
                 return True
         return False
 
@@ -68,41 +68,41 @@ class RuleBot:
 
     def describe_planet(self):
         responses = (
-            "Earth seems to be a beautiful planet full of life 🌍\n",
-            "I have heard Earth has oceans, forests, and amazing biodiversity.\n"
+            "A good college offers a supportive learning environment and strong academic culture.\n",
+            "Universities usually provide modern infrastructure, experienced faculty, and campus facilities.\n"
         )
         return random.choice(responses)
 
     def answer_why(self):
         responses = (
-            "I come in peace to learn about humans 👽\n",
-            "I am here to collect information about your planet.\n",
-            "Curiosity brought me here.\n"
+            "Choosing the right college helps shape both career and personal growth.\n",
+            "A well-planned admission decision can open better opportunities in the future.\n",
+            "Your choice of college plays an important role in your professional journey.\n"
         )
         return random.choice(responses)
 
     def about_intellipaat(self):
         responses = (
-            "Intellipaat is a professional online education platform.\n",
-            "Intellipaat helps people upskill and grow their careers.\n",
-            "Intellipaat provides industry-focused training programs.\n"
+            "Intellipaat provides industry-focused training programs for skill development.\n",
+            "It helps students and professionals upskill for better career opportunities.\n",
+            "Intellipaat offers guided learning in various technical domains.\n"
         )
         return random.choice(responses)
 
     def about_music(self):
         responses = (
-            "Music feels like a universal language 🎵\n",
-            "Humans express emotions beautifully through music.\n",
-            "Music seems to connect humans deeply.\n"
+            "Many colleges encourage cultural activities like music and arts.\n",
+            "Participating in music clubs can enhance creativity and confidence.\n",
+            "Music and extracurricular activities help maintain a balanced college life.\n"
         )
         return random.choice(responses)
 
     def no_match(self):
         responses = (
-            "Interesting. Can you tell me more?\n",
-            "I see. Please elaborate.\n",
-            "Why do you think that?\n",
-            "That sounds fascinating.\n"
+            "Could you please provide more details?\n",
+            "That sounds interesting. Can you explain a bit more?\n",
+            "I would like to understand your admission preferences better.\n",
+            "Please share more information.\n"
         )
         return random.choice(responses)
 
